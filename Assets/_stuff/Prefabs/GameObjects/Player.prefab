@@ -100,6 +100,8 @@ GameObject:
   - component: {fileID: 4385762949668517768}
   - component: {fileID: 2776823809744337986}
   - component: {fileID: 1585210763996124445}
+  - component: {fileID: 293636472706857323}
+  - component: {fileID: 1534483698407363107}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -162,6 +164,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26c53ef93eed87746bc788bd1d2ba212, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movement: {fileID: 0}
+  camera: {fileID: 0}
+  statistics: {fileID: 0}
+  inventory: {fileID: 0}
 --- !u!114 &2776823809744337986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -190,3 +196,51 @@ MonoBehaviour:
   camera: {fileID: 0}
   followTarget: {fileID: 0}
   followSpeed: 2.5
+--- !u!114 &293636472706857323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9001857435549011098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d0095621cebc264698b7ef0bf24713d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerStatistics:
+  - statisticType: 0
+    baseValue: 200
+    modifierFlat: 0
+    modifierMultiplier: 0
+    finalValue: 0
+    statisticModifiers: []
+  - statisticType: 1
+    baseValue: 0
+    modifierFlat: 0
+    modifierMultiplier: 0
+    finalValue: 0
+    statisticModifiers: []
+--- !u!114 &1534483698407363107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9001857435549011098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bae398c21cdde6c408da862599229c99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventory:
+  - itemType: {fileID: 11400000, guid: e10b7915a65d0ab4c81dbdb17fc13b35, type: 2}
+    itemAmount: 0
+  - itemType: {fileID: 11400000, guid: 84354aebb7f61df43b4e21f36adbc750, type: 2}
+    itemAmount: 0
+  - itemType: {fileID: 11400000, guid: 0877d6fb53986724a99a908a41fbd2d0, type: 2}
+    itemAmount: 0
+  - itemType: {fileID: 11400000, guid: 0e9acb21b7e755d4ca754f93b2309258, type: 2}
+    itemAmount: 0
+  debugItem: {fileID: 11400000, guid: e10b7915a65d0ab4c81dbdb17fc13b35, type: 2}
+  debugAmount: 1
