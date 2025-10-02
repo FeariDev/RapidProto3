@@ -359,9 +359,9 @@ MonoBehaviour:
   attackDamage: 10
   slashLifetime: 0.5
   slashDistance: 1
-  bulletDamage: 5
+  bulletDamage: 30
   bulletSpeed: 10
-  bulletLifetime: 3
+  bulletLifetime: 6
 --- !u!114 &5876313223528371410
 MonoBehaviour:
   m_ObjectHideFlags: 0
