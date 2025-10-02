@@ -2,19 +2,27 @@ using UnityEngine;
 
 [RequireComponent(typeof(PlayerMovement))]
 [RequireComponent(typeof(PlayerCamera))]
-public class Player : MonoBehaviour
+[RequireComponent(typeof(PlayerStatistics))]
+[RequireComponent(typeof(PlayerInventory))]
+public class Player : Singleton<Player>
 {
-    PlayerMovement movement;
-    new PlayerCamera camera;
+    public PlayerMovement movement;
+    public new PlayerCamera camera;
+    public PlayerStatistics statistics;
+    public PlayerInventory inventory;
 
 
 
     #region Unity lifecycle
 
-    void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+
         movement = GetComponent<PlayerMovement>();
         camera = GetComponent<PlayerCamera>();
+        statistics = GetComponent<PlayerStatistics>();
+        inventory = GetComponent<PlayerInventory>();
     }
 
     #endregion
