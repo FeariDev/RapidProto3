@@ -151,6 +151,7 @@ GameObject:
   - component: {fileID: 293636472706857323}
   - component: {fileID: 1534483698407363107}
   - component: {fileID: 434800377764557541}
+  - component: {fileID: 5876313223528371410}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -263,6 +264,7 @@ MonoBehaviour:
   camera: {fileID: 0}
   statistics: {fileID: 0}
   inventory: {fileID: 0}
+  attack: {fileID: 0}
 --- !u!114 &2776823809744337986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -360,3 +362,17 @@ MonoBehaviour:
   bulletDamage: 5
   bulletSpeed: 10
   bulletLifetime: 3
+--- !u!114 &5876313223528371410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9001857435549011098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83426b5ae00019d4da95dcc59da20d2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 0
