@@ -21,7 +21,7 @@ public class CardModifier
     public ModifierType modifierType;
     public enum ModifierType
     {
-        Value,
+        Flat,
         Percentage
     }
     
