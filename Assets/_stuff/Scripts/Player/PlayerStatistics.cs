@@ -73,7 +73,7 @@ public class PlayerStatistics : MonoBehaviour
                 {
                     switch (modifier1.cardModifier.modifierType)
                     {
-                        case CardModifier.ModifierType.Value:
+                        case CardModifier.ModifierType.Flat:
                             playerStatistics[i].modifierFlat += modifier1.cardModifier.modifierValue * modifier1.amount;
                             break;
                         case CardModifier.ModifierType.Percentage:
