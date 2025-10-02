@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5440550827174148682}
   m_Layer: 0
   m_Name: BasicEnemyTEMP
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -176,7 +176,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 25
-  moveSpeed: 5
+  moveSpeed: 3
   damage: 2
   isRanged: 0
   isCreeper: 0
@@ -186,3 +186,6 @@ MonoBehaviour:
   projectileSpeed: 10
   explodeRange: 1.5
   explodeDamage: 10
+  xpPrefab: {fileID: 8398588224164522522, guid: cc1253df9032ec347ac008d087a0b7f9, type: 3}
+  rrpPrefab: {fileID: 5628346426392719905, guid: a085c1498086afb4e84a67564e860f97, type: 3}
+  rrpDropChance: 0.05

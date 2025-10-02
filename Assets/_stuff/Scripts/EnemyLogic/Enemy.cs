@@ -1,7 +1,10 @@
 using UnityEngine;
+using System;
 
 public class Enemy : MonoBehaviour
 {
+    public event Action OnDeath;
+
     [Header("General Stats")]
     public float maxHealth = 10f;
     public float moveSpeed = 3f;
@@ -18,6 +21,11 @@ public class Enemy : MonoBehaviour
     [Header("Creeper Settings")]
     public float explodeRange = 1.5f;
     public float explodeDamage = 10f;
+
+    [Header("Drops")]
+    public GameObject xpPrefab;
+    public GameObject rrpPrefab;
+    [Range(0f, 1f)] public float rrpDropChance = 0.1f;
 
     private float currentHealth;
     private Transform player;
@@ -109,6 +117,18 @@ public class Enemy : MonoBehaviour
 
     void Die()
     {
+        DropLoot();
+
+        OnDeath?.Invoke();
         Destroy(gameObject);
+    }
+
+    void DropLoot()
+    {
+        if (xpPrefab != null)
+            Instantiate(xpPrefab, transform.position, Quaternion.identity);
+
+        if (rrpPrefab != null && UnityEngine.Random.value <= rrpDropChance)
+            Instantiate(rrpPrefab, transform.position, Quaternion.identity);
     }
 }
