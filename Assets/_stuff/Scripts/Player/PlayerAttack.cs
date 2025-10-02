@@ -25,10 +25,15 @@ public class PlayerAttack : MonoBehaviour
     {
         attackTimer += Time.deltaTime;
 
-        // Placeholder way to change weapon by pressing E
-        if (Input.GetKeyDown(KeyCode.E))
+        // Switch attack with number keys
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            currentAttack = (currentAttack == AttackType.Slash) ? AttackType.Bullet : AttackType.Slash;
+            currentAttack = AttackType.Slash;
+            Debug.Log("Switched to: " + currentAttack);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            currentAttack = AttackType.Bullet;
             Debug.Log("Switched to: " + currentAttack);
         }
 
