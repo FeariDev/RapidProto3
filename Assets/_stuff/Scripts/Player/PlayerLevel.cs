@@ -1,5 +1,7 @@
 using System;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerLevel : MonoBehaviour
 {
@@ -29,11 +31,16 @@ public class PlayerLevel : MonoBehaviour
         }
     }
     [ReadOnly] public float levelUpExpRequirement;
+    [ReadOnly] public float lastLevelUpExpRequirement;
     [ReadOnly] public int levelOverflow;
 
     [Header("Properties")]
     [SerializeField] float levelOverflowMultiplier = 2f;
     [SerializeField] float[] levelUpExpRequirements;
+
+    [Header("UI")]
+    [SerializeField] TMP_Text levelText;
+    [SerializeField] Slider xpSlider;
 
     public event Action OnLevelUp;
     public event Action OnUpdateExperience;
@@ -48,6 +55,7 @@ public class PlayerLevel : MonoBehaviour
         {
             int newLevel = Level + 1;
             Level = newLevel;
+            lastLevelUpExpRequirement = levelUpExpRequirement;
             OnLevelUp?.Invoke();
         }
     }
@@ -67,6 +75,14 @@ public class PlayerLevel : MonoBehaviour
 
 
 
+    void UpdateUI()
+    {
+        levelText.text = Level.ToString();
+        xpSlider.value = (Experience - lastLevelUpExpRequirement) / (levelUpExpRequirement - lastLevelUpExpRequirement);
+    }
+
+
+
     public float debugExperience;
     [Button]
     void DebugAddExperience()
@@ -82,6 +98,9 @@ public class PlayerLevel : MonoBehaviour
     {
         OnLevelUp += CheckExperience;
         OnUpdateExperience += CheckLevel;
+
+        OnLevelUp += UpdateUI;
+        OnUpdateExperience += UpdateUI;
     }
 
     #endregion
