@@ -3,6 +3,7 @@ using UnityEngine;
 public class ItemSO : ScriptableObject
 {
     [Header("Base Item Properties")]
+    public Sprite sprite;
     public string itemName;
     public int maxStackAmount = 1;
     /// <summary>

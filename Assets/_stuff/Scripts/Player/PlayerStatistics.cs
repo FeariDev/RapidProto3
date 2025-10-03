@@ -32,6 +32,7 @@ public class PlayerStatistics : MonoBehaviour
 
     void OnInventoryUpdate(InventorySlot slot)
     {
+        //ERROR HANDLING IF ITEM IS NOT A CARD
         CardSO card = (CardSO)slot.itemType;
 
         ApplyCardModifier(card, slot.itemAmount);

@@ -5,7 +5,6 @@ using UnityEngine;
 public class CardSO : ItemSO
 {
     [Header("Card Properties")]
-    public Sprite cardSprite;
     public CardModifier[] cardModifiers;
 }
 

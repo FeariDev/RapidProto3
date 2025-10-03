@@ -344,6 +344,8 @@ MonoBehaviour:
     itemAmount: 0
   - itemType: {fileID: 11400000, guid: 0e9acb21b7e755d4ca754f93b2309258, type: 2}
     itemAmount: 0
+  - itemType: {fileID: 11400000, guid: ca48dde2308fbba4e9c6fd5663155210, type: 2}
+    itemAmount: 0
   debugItem: {fileID: 11400000, guid: e10b7915a65d0ab4c81dbdb17fc13b35, type: 2}
   debugAmount: 1
 --- !u!114 &434800377764557541
@@ -380,6 +382,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 0
+  healthSlider: {fileID: 0}
+  debugHealthValue: 0
 --- !u!114 &1958127308133422331
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -395,12 +399,15 @@ MonoBehaviour:
   level: 0
   experience: 0
   levelUpExpRequirement: 0
+  lastLevelUpExpRequirement: 0
   levelOverflow: 0
   levelOverflowMultiplier: 2
   levelUpExpRequirements:
   - 100
   - 200
   - 500
+  levelText: {fileID: 0}
+  xpSlider: {fileID: 0}
   debugExperience: 50
 --- !u!82 &9146793978014798093
 AudioSource:
