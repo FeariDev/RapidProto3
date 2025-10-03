@@ -4,23 +4,48 @@ using UnityEngine;
 
 public abstract class Health : MonoBehaviour
 {
-    public float maxHealth;
-    public float currentHealth;
+    [SerializeField] float maxHealth;
+    [SerializeField] float currentHealth;
+    public float MaxHealth
+    {
+        get
+        {
+            return maxHealth;
+        }
+        private set
+        {
+            maxHealth = value;
+        }
+    }
+    public float CurrentHealth
+    {
+        get
+        {
+            return currentHealth;
+        }
+        private set
+        {
+            currentHealth = value;
+        }
+    }
 
     public event Action OnUpdateHealth;
 
 
 
-    public void UpdateHealth(float value)
+    public void AddHealth(float value)
     {
-        currentHealth += value;
+        CurrentHealth += value;
+
+        if (CurrentHealth > MaxHealth) CurrentHealth = MaxHealth;
+        if (CurrentHealth < 0) CurrentHealth = 0;
 
         OnUpdateHealth?.Invoke();
     }
 
     void CheckAliveStatus()
     {
-        if (currentHealth <= 0)
+        if (CurrentHealth <= 0)
         {
             Die();
         }
@@ -35,11 +60,16 @@ public abstract class Health : MonoBehaviour
 
     #region Unity lifecycle
 
-    void Awake()
+    public virtual void Awake()
     {
         OnUpdateHealth += CheckAliveStatus;
 
-        currentHealth = maxHealth;
+        CurrentHealth = MaxHealth;
+    }
+
+    public virtual void Start()
+    {
+        
     }
 
     #endregion
