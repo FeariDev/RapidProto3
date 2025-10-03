@@ -236,6 +236,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
+  amount: 10
   lifetime: 20
 --- !u!1 &8833411610034002654
 GameObject:

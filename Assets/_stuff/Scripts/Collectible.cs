@@ -5,6 +5,7 @@ public class Collectible : MonoBehaviour
     public enum CollectibleType { XP, RRP }
     public CollectibleType type;
 
+    public float amount;
     public float lifetime = 20f;
 
     void Start()
@@ -18,9 +19,8 @@ public class Collectible : MonoBehaviour
         {
             if (type == CollectibleType.XP)
             {
-                // Example give XP
-                // col.GetComponent<PlayerStats>().GainXP(1);
                 Debug.Log("Player collected XP orb");
+                Player.Instance.level.UpdateExperience(amount);
             }
             else if (type == CollectibleType.RRP)
             {

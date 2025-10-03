@@ -165,4 +165,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef144192b57f2f34eb0994362a1235a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  WeaponPrefab: {fileID: 0}
+  attackCooldown: 1
   damage: 5
+  bulletDamage: 30
+  bulletSpeed: 10
+  bulletLifetime: 3
