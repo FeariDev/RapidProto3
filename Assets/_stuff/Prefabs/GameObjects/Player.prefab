@@ -354,15 +354,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bead84fd4738be641b8e4de1da13d0ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slashPrefab: {fileID: 437905965427695712, guid: 287e2ea35a9c8b84db4243549f0d6212, type: 3}
-  bulletPrefab: {fileID: 8145320917540630718, guid: 8074426f81185f0429a1cdad1fcb49d9, type: 3}
-  attackCooldown: 1
-  attackDamage: 10
-  slashLifetime: 0.5
-  slashDistance: 1
-  bulletDamage: 30
-  bulletSpeed: 10
-  bulletLifetime: 6
+  slashPrefab: {fileID: 2718999305193530113, guid: 287e2ea35a9c8b84db4243549f0d6212, type: 3}
+  bulletPrefab: {fileID: 4128790721785997761, guid: 8074426f81185f0429a1cdad1fcb49d9, type: 3}
+  chainsawPrefab: {fileID: 4872019258911784190, guid: 492abb98dda681245a17fcc61d850625, type: 3}
+  chainsawCooldown: 0.2
+  currentWeapon: {fileID: 2718999305193530113, guid: 287e2ea35a9c8b84db4243549f0d6212, type: 3}
 --- !u!114 &5876313223528371410
 MonoBehaviour:
   m_ObjectHideFlags: 0

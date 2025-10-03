@@ -750,10 +750,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 434800377764557541, guid: 5573735aa035c4942b0b9e6da492eb24, type: 3}
-      propertyPath: chainsawPrefab
-      value: 
-      objectReference: {fileID: 2829042109646442113, guid: 492abb98dda681245a17fcc61d850625, type: 3}
     - target: {fileID: 1067977858665581259, guid: 5573735aa035c4942b0b9e6da492eb24, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -798,40 +794,8 @@ PrefabInstance:
       propertyPath: camera
       value: 
       objectReference: {fileID: 368653363}
-    - target: {fileID: 1585210763996124445, guid: 5573735aa035c4942b0b9e6da492eb24, type: 3}
-      propertyPath: followTarget
-      value: 
-      objectReference: {fileID: 977870078}
-    - target: {fileID: 2984313139887459862, guid: 5573735aa035c4942b0b9e6da492eb24, type: 3}
-      propertyPath: m_Constraints
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5266882411253299947, guid: 5573735aa035c4942b0b9e6da492eb24, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
-    - target: {fileID: 5266882411253299947, guid: 5573735aa035c4942b0b9e6da492eb24, type: 3}
-      propertyPath: m_Color.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5266882411253299947, guid: 5573735aa035c4942b0b9e6da492eb24, type: 3}
-      propertyPath: m_Color.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5266882411253299947, guid: 5573735aa035c4942b0b9e6da492eb24, type: 3}
-      propertyPath: m_SortingOrder
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7992986391536136501, guid: 5573735aa035c4942b0b9e6da492eb24, type: 3}
-      propertyPath: m_Name
-      value: Sprite
-      objectReference: {fileID: 0}
     - target: {fileID: 9001857435549011098, guid: 5573735aa035c4942b0b9e6da492eb24, type: 3}
       propertyPath: m_Name
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 9001857435549011098, guid: 5573735aa035c4942b0b9e6da492eb24, type: 3}
-      propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []

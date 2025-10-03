@@ -166,4 +166,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81e02be049a9a08448ee947aa3b0e1de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  WeaponPrefab: {fileID: 0}
+  attackCooldown: 0.2
   damage: 8
+  chainsawDamage: 8
+  chainsawLifetime: 0.3
+  chainsawDistance: 0.5
+  chainsawCooldown: 0.2

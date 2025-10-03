@@ -1,10 +1,9 @@
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class Bullet : Weapon
 {
-    public float damage = 5f;
 
-    void OnTriggerEnter2D(Collider2D col)
+    public override void OnTriggerEnter2D(Collider2D col)
     {
         if (col.CompareTag("Enemy"))
         {
@@ -13,5 +12,25 @@ public class Bullet : MonoBehaviour
                 enemy.TakeDamage(damage);
             Destroy(gameObject);
         }
+    }
+    public float bulletDamage = 20f;
+    public float bulletSpeed = 10f;
+    public float bulletLifetime = 3f;
+    public override void Attack(Vector3 attackPos)
+    {
+
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePos.z = 0;
+        Vector3 dir = (mousePos - transform.position).normalized;
+
+
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0, 0, angle);
+
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        if (rb != null)
+            rb.linearVelocity = dir * bulletSpeed;
+
+        Destroy(gameObject, bulletLifetime);
     }
 }
