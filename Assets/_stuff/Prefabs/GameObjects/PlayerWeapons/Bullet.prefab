@@ -168,6 +168,6 @@ MonoBehaviour:
   WeaponPrefab: {fileID: 0}
   attackCooldown: 1
   damage: 5
-  bulletDamage: 30
+  bulletDamage: 50
   bulletSpeed: 10
   bulletLifetime: 3

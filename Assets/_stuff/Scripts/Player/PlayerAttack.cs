@@ -10,7 +10,10 @@ public class PlayerAttack : MonoBehaviour
     public Weapon bulletPrefab;
     public Weapon chainsawPrefab;
 
-     
+    [Header("attackAudio")]
+    [SerializeField] private AudioSource slashAudio;
+    [SerializeField] private AudioSource bulletAudio;
+    [SerializeField] private AudioSource chainsawAudio;
 
 
     [Header("Bullet Settings")]
@@ -45,6 +48,29 @@ public class PlayerAttack : MonoBehaviour
     {
         Weapon newWeapon = Instantiate(currentWeapon, transform.position, Quaternion.identity, transform);
         newWeapon.Attack(transform.position);
+
+        //Sound effects
+        if (currentWeapon == slashPrefab)
+        {
+            slashAudio.Play();
+        }
+        else if (currentWeapon == bulletPrefab)
+        {
+            bulletAudio.Play();
+        }
+        else if (currentWeapon == chainsawPrefab)
+        {
+            if (!chainsawAudio.isPlaying) // only start if not already playing
+            {
+                chainsawAudio.loop = true;
+                chainsawAudio.Play();
+            }
+        }
+        if (currentWeapon != chainsawPrefab)
+        {
+            chainsawAudio.loop = false;
+            chainsawAudio.Stop();
+        }
     }
 
    
