@@ -750,6 +750,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 434800377764557541, guid: 5573735aa035c4942b0b9e6da492eb24, type: 3}
+      propertyPath: chainsawPrefab
+      value: 
+      objectReference: {fileID: 2829042109646442113, guid: 492abb98dda681245a17fcc61d850625, type: 3}
     - target: {fileID: 1067977858665581259, guid: 5573735aa035c4942b0b9e6da492eb24, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
