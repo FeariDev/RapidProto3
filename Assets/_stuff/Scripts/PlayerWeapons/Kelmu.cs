@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class Kelmu : Weapon
 {
@@ -7,6 +8,9 @@ public class Kelmu : Weapon
 	public float bulletSpeed = 10f;
 	public float bulletLifetime = 3f;
 	public float freezeDuration = 2f;
+	public int pierceCount = 5;
+
+	private int enemiesHit = 0;
 	
 	public override void Attack(Vector3 attackPos)
 	{
@@ -25,18 +29,24 @@ public class Kelmu : Weapon
 
 		Destroy(gameObject, bulletLifetime);
 	}
+
+	private HashSet<Enemy> hitEnemies = new HashSet<Enemy>();
 	
 	public override void OnTriggerEnter2D(Collider2D col)
 	{
 		if (col.CompareTag("Enemy"))
 		{
 			Enemy enemy = col.GetComponent<Enemy>();
-			if (enemy != null)
+			if (enemy != null && !hitEnemies.Contains(enemy))
 			{
+				hitEnemies.Add(enemy);
 				enemy.TakeDamage(damage);
 				enemy.Freeze(freezeDuration);
+				enemiesHit++;
+				
+				if (enemiesHit >= pierceCount)
+					Destroy(gameObject);
 			}
-			Destroy(gameObject);
 		}
 	}
 }
