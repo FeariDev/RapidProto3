@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using System.Collections;
 
 public class Enemy : MonoBehaviour
 {
@@ -31,10 +32,25 @@ public class Enemy : MonoBehaviour
     private Transform player;
     private float attackTimer;
 
+    private bool isFrozen = false;
+    private float originalSpeed;
+    private float originalCooldown;
+
+    private SpriteRenderer sr;
+    private Color normalColor;
+    public Color frozenColor = Color.gray7;
+
     void Start()
     {
         currentHealth = maxHealth;
         player = GameObject.FindGameObjectWithTag("Player")?.transform;
+
+        sr = GetComponent<SpriteRenderer>();
+        if (sr != null)
+            normalColor = sr.color;
+
+        originalSpeed = moveSpeed;
+        originalCooldown = attackCooldown;
     }
 
     void Update()
@@ -130,5 +146,30 @@ public class Enemy : MonoBehaviour
 
         if (rrpPrefab != null && UnityEngine.Random.value <= rrpDropChance)
             Instantiate(rrpPrefab, transform.position, Quaternion.identity);
+    }
+
+    public void Freeze(float duration)
+    {
+        if (!isFrozen)
+            StartCoroutine(FreezeRoutine(duration));
+    }
+
+    private IEnumerator FreezeRoutine(float duration)
+    {
+        isFrozen = true;
+        moveSpeed = 0f;
+        attackCooldown = 1000f;
+
+        if (sr != null)
+            sr.color = frozenColor;
+
+        yield return new WaitForSeconds(duration);
+
+        moveSpeed = originalSpeed;
+        attackCooldown = originalCooldown;
+        isFrozen = false;
+
+        if (sr != null)
+            sr.color = normalColor;
     }
 }

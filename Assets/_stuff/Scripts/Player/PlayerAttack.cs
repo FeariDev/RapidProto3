@@ -9,11 +9,13 @@ public class PlayerAttack : MonoBehaviour
     public Weapon slashPrefab;
     public Weapon bulletPrefab;
     public Weapon chainsawPrefab;
+    public Weapon kelmuPrefab;
 
     [Header("attackAudio")]
     [SerializeField] private AudioSource slashAudio;
     [SerializeField] private AudioSource bulletAudio;
     [SerializeField] private AudioSource chainsawAudio;
+    [SerializeField] private AudioSource kelmuAudio;
 
 
     [Header("Bullet Settings")]
@@ -34,9 +36,11 @@ public class PlayerAttack : MonoBehaviour
             currentWeapon = bulletPrefab;
         else if (Input.GetKeyDown(KeyCode.Alpha3))
             currentWeapon = chainsawPrefab;
+        else if (Input.GetKeyDown(KeyCode.Alpha4))
+            currentWeapon = kelmuPrefab;
 
-        // Automatic attack between intervals
-        float currentCooldown = currentWeapon.attackCooldown;
+            // Automatic attack between intervals
+            float currentCooldown = currentWeapon.attackCooldown;
         if (attackTimer >= currentCooldown)
         {
             PerformAttack();
@@ -65,6 +69,10 @@ public class PlayerAttack : MonoBehaviour
                 chainsawAudio.loop = true;
                 chainsawAudio.Play();
             }
+        }
+        else if (currentWeapon = kelmuPrefab)
+        {
+            kelmuAudio.Play();
         }
         if (currentWeapon != chainsawPrefab)
         {
