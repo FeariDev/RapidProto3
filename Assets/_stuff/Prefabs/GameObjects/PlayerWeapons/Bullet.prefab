@@ -166,8 +166,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WeaponPrefab: {fileID: 0}
-  attackCooldown: 1
-  damage: 5
-  bulletDamage: 50
+  baseDamage: 30
+  baseCooldown: 1
+  damage: 20
+  cooldown: 1
   bulletSpeed: 10
   bulletLifetime: 3
