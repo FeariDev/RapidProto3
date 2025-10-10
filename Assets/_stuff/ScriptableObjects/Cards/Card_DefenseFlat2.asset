@@ -16,7 +16,7 @@ MonoBehaviour:
   itemName: Defense 2
   itemDesc: +10 Defense
   maxStackAmount: 1
-  weight: 0
+  weight: 1
   cardModifiers:
   - modifierValue: 10
     modifierType: 0

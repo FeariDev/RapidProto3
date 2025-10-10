@@ -16,7 +16,7 @@ MonoBehaviour:
   itemName: Attack Speed
   itemDesc: +6 Attack Speed
   maxStackAmount: 4
-  weight: 0
+  weight: 1
   cardModifiers:
   - modifierValue: 6
     modifierType: 0

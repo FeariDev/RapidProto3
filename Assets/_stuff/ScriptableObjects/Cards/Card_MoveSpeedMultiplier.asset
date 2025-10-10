@@ -16,7 +16,7 @@ MonoBehaviour:
   itemName: Movement 3
   itemDesc: +5% MoveSpeed
   maxStackAmount: 10
-  weight: 0
+  weight: 1
   cardModifiers:
   - modifierValue: 5
     modifierType: 1

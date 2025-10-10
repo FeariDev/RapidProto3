@@ -16,7 +16,7 @@ MonoBehaviour:
   itemName: Attack Damage 2
   itemDesc: +20% Attack Damage
   maxStackAmount: 1
-  weight: 0
+  weight: 1
   cardModifiers:
   - modifierValue: 20
     modifierType: 1
