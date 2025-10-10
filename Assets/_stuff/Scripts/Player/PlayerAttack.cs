@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 
 public class PlayerAttack : MonoBehaviour
 {
@@ -25,22 +26,38 @@ public class PlayerAttack : MonoBehaviour
 
     private float attackTimer;
 
+    public static Action<int> OnWeaponSwitched;
+
     void Update()
     {
         attackTimer += Time.deltaTime;
 
         // Switch attack with number keys
         if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
             currentWeapon = slashPrefab;
+            OnWeaponSwitched?.Invoke(1);
+        }
         else if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
             currentWeapon = bulletPrefab;
+            OnWeaponSwitched?.Invoke(2);
+        }
         else if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
             currentWeapon = chainsawPrefab;
+            OnWeaponSwitched?.Invoke(3);
+        }
         else if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
             currentWeapon = kelmuPrefab;
+            OnWeaponSwitched?.Invoke(4);
+        }
 
-            // Automatic attack between intervals
-            float currentCooldown = currentWeapon.attackCooldown;
+        if (currentWeapon == null) return;
+
+        // Automatic attack between intervals
+        float currentCooldown = currentWeapon.attackCooldown;
         if (attackTimer >= currentCooldown)
         {
             PerformAttack();
