@@ -781,6 +781,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 434800377764557541, guid: 5573735aa035c4942b0b9e6da492eb24, type: 3}
+      propertyPath: kelmuPrefab
+      value: 
+      objectReference: {fileID: 9129696192246960593, guid: cb87c3b283b184a4f8b11ad64620e80e, type: 3}
     - target: {fileID: 1067977858665581259, guid: 5573735aa035c4942b0b9e6da492eb24, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
