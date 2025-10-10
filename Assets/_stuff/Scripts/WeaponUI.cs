@@ -15,12 +15,12 @@ public class WeaponUI : MonoBehaviour
 
     private void OnEnable()
     {
-        PlayerAttack.OnWeaponSwitched += UpdateWeaponUI;
+        Player.Instance.attack.OnWeaponSwitched += UpdateWeaponUI;
     }
 
     private void OnDisable()
     {
-        PlayerAttack.OnWeaponSwitched -= UpdateWeaponUI;
+        Player.Instance.attack.OnWeaponSwitched -= UpdateWeaponUI;
     }
 
     void UpdateWeaponUI(int weaponIndex)

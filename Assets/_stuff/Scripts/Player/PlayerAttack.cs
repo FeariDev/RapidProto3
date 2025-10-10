@@ -26,7 +26,7 @@ public class PlayerAttack : MonoBehaviour
 
     private float attackTimer;
 
-    public static Action<int> OnWeaponSwitched;
+    public Action<int> OnWeaponSwitched;
 
     void Update()
     {

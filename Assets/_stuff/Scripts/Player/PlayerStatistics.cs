@@ -72,12 +72,34 @@ public class PlayerStatistics : MonoBehaviour
         }
     }
 
-    void UpdatePlayerStatistics()
+    void CalculatePlayerStatistics()
     {
         foreach (PlayerStatistic statistic in playerStatistics)
         {
-            
+            statistic.modifierFlat = 0;
+            statistic.modifierMultiplier = 0;
+
+            foreach (StatisticModifier modifier in statistic.statisticModifiers)
+            {
+                switch (modifier.cardModifier.modifierType)
+                {
+                    case CardModifier.ModifierType.Flat:
+                        statistic.modifierFlat += modifier.cardModifier.modifierValue * modifier.amount;
+                        break;
+                    case CardModifier.ModifierType.Percentage:
+                        statistic.modifierMultiplier += modifier.cardModifier.modifierValue / 100 * modifier.amount;
+                        break;
+                }
+            }
+
+            statistic.finalValue = statistic.baseValue + (statistic.baseValue * statistic.modifierFlat);
         }
+    }
+    void WeaponSwitchedUpdate(int value)
+    {
+        GetPlayerStatisticsBaseValues();
+        CalculatePlayerStatistics();
+        ApplyPlayerStatistics();
     }
 
 
@@ -90,6 +112,7 @@ public class PlayerStatistics : MonoBehaviour
 
         GetPlayerStatisticsBaseValues();
         ApplyCardModifier(card, slot.itemAmount);
+        CalculatePlayerStatistics();
         ApplyPlayerStatistics();
     }
 
@@ -150,8 +173,10 @@ public class PlayerStatistics : MonoBehaviour
     void Start()
     {
         InitializePlayerStatisticsArray();
+        WeaponSwitchedUpdate(0);
 
         Player.Instance.inventory.OnInventoryUpdate += OnInventoryUpdate;
+        Player.Instance.attack.OnWeaponSwitched += WeaponSwitchedUpdate;
     }
 
     #endregion
