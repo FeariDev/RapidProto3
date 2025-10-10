@@ -148,6 +148,7 @@ GameObject:
   - component: {fileID: 4535873718471113510}
   - component: {fileID: 4407027878177634714}
   - component: {fileID: 5878479021224482201}
+  - component: {fileID: 2484326872797243088}
   m_Layer: 5
   m_Name: CardButton
   m_TagString: Untagged
@@ -257,6 +258,22 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2484326872797243088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4624028514031335115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7835f1e8e428b540bc88bb50010ed18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icon: {fileID: 4036093332899407704}
+  nameText: {fileID: 6283668780510336176}
+  descText: {fileID: 3621987489518345153}
+  button: {fileID: 5878479021224482201}
 --- !u!1 &5565709226567083673
 GameObject:
   m_ObjectHideFlags: 0
@@ -287,8 +304,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 4443651471955035634}
   - {fileID: 1806670321548635557}
+  - {fileID: 4443651471955035634}
   m_Father: {fileID: 3575152194582543570}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -426,8 +443,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 18
+  m_fontSizeBase: 18
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -442,7 +459,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_TextWrappingMode: 1
+  m_TextWrappingMode: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
