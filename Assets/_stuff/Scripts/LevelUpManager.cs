@@ -53,9 +53,6 @@ public class LevelUpManager : MonoBehaviour
 
     public void ChooseCard(CardSO chosen)
     {
-        // TODO: Apply card effect / add to inventory
-        // e.g. PlayerInventory.instance.AddCard(chosen);
-
         Player.Instance.inventory.AddItem(chosen, 1);
 
         CloseLevelUp();
