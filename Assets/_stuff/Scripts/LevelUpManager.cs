@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using System.Collections;
 
 public class LevelUpManager : MonoBehaviour
 {
@@ -20,25 +21,66 @@ public class LevelUpManager : MonoBehaviour
         Player.Instance.level.OnLevelUp += TriggerLevelUp;
     }
 
-    public List<CardSO> chosen;
+
     void TriggerLevelUp()
     {
         Time.timeScale = 0f;
 
         levelUpScreen.SetActive(true);
 
+        RevealCards();
+    }
+
+    public float cardRevealTime = 0.33f;
+    public Button rerollButton;
+    void RevealCards()
+    {
+        StartCoroutine(RevealCardSequence());
+    }
+    IEnumerator RevealCardSequence()
+    {
+        ToggleRerollButton(false);
+
         foreach (Transform child in cardUIParent)
             Destroy(child.gameObject);
 
-        chosen = PickRandomCards(3);
+        List<CardSO> chosen = PickRandomCards(3);
 
+        
         foreach (CardSO card in chosen)
         {
+            yield return new WaitForSecondsRealtime(cardRevealTime);
+
             GameObject cardUI = Instantiate(cardUIPrefab, cardUIParent);
             CardUI ui = cardUI.GetComponent<CardUI>();
             ui.Setup(card, this);
         }
+
+        yield return new WaitForSecondsRealtime(cardRevealTime);
+
+        ToggleRerollButton(true);
+
+        yield return null;
     }
+
+    void ToggleRerollButton(bool toggle)
+    {
+        if (toggle)
+        {
+            rerollButton.interactable = true;
+        }
+        else
+        {
+            rerollButton.interactable = false;
+        }
+    }
+    
+    public void Button_Reroll()
+    {
+        RevealCards();
+    }
+
+
 
     public void ChooseCard(CardSO chosen)
     {
@@ -58,7 +100,7 @@ public class LevelUpManager : MonoBehaviour
         List<CardSO> chosen = new List<CardSO>();
         List<CardSO> pool = new List<CardSO>(allCards);
 
-        for (int i=0; i<amount; i++)
+        for (int i = 0; i < amount; i++)
         {
             if (pool.Count == 0) break;
 
@@ -87,4 +129,8 @@ public class LevelUpManager : MonoBehaviour
 
         return pool[0];
     }
+
+
+
+    
 }
