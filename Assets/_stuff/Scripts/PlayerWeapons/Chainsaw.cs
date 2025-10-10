@@ -2,10 +2,8 @@ using UnityEngine;
 
 public class Chainsaw : Weapon
 {
-    public float chainsawDamage = 8f;
     public float chainsawLifetime = 0.3f;
     public float chainsawDistance = 0.5f;
-    public float chainsawCooldown = 0.2f;
     public override void Attack(Vector3 attackPos)
     {
 

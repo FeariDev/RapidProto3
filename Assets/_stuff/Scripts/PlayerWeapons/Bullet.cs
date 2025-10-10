@@ -13,7 +13,6 @@ public class Bullet : Weapon
             Destroy(gameObject);
         }
     }
-    public float bulletDamage = 20f;
     public float bulletSpeed = 10f;
     public float bulletLifetime = 3f;
     public override void Attack(Vector3 attackPos)

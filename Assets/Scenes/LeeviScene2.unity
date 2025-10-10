@@ -780,10 +780,6 @@ PrefabInstance:
       propertyPath: levelText
       value: 
       objectReference: {fileID: 1756687036}
-    - target: {fileID: 2776823809744337986, guid: 5573735aa035c4942b0b9e6da492eb24, type: 3}
-      propertyPath: baseMoveSpeed
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 5876313223528371410, guid: 5573735aa035c4942b0b9e6da492eb24, type: 3}
       propertyPath: healthSlider
       value: 
@@ -1564,7 +1560,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1424075271
 Transform:
   m_ObjectHideFlags: 0

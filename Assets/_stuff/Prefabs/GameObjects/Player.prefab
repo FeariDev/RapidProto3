@@ -270,6 +270,7 @@ MonoBehaviour:
   inventory: {fileID: 1534483698407363107}
   attack: {fileID: 434800377764557541}
   level: {fileID: 1958127308133422331}
+  health: {fileID: 0}
 --- !u!114 &2776823809744337986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -282,6 +283,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfceacf1e7af55b4a8c504166f000d76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  baseMoveSpeed: 5
   moveSpeed: 5
 --- !u!114 &1585210763996124445
 MonoBehaviour:

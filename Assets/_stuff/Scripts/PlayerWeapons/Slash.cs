@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class Slash : Weapon
 {
-    public float attackDamage = 10f;
     public float slashLifetime = 0.5f;
     public float slashDistance = 1f;
     public override void Attack(Vector3 attackPos)

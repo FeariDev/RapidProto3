@@ -4,7 +4,6 @@ using System.Collections.Generic;
 public class Kelmu : Weapon
 {
 	[Header("Kelmu Settings")]
-	public float bulletDamage = 20f;
 	public float bulletSpeed = 10f;
 	public float bulletLifetime = 3f;
 	public float freezeDuration = 2f;

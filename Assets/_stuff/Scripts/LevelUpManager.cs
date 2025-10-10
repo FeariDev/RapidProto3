@@ -13,8 +13,6 @@ public class LevelUpManager : MonoBehaviour
     [Header("UI")]
     public GameObject levelUpScreen;
 
-    private bool isLevelingUp = false;
-
     void Start()
     {
         levelUpScreen.SetActive(false);
@@ -22,18 +20,9 @@ public class LevelUpManager : MonoBehaviour
         Player.Instance.level.OnLevelUp += TriggerLevelUp;
     }
 
-    /*
-    void Update()
-    {
-        if (playerLevelScript.levelUpExpRequirement <= playerLevelScript.Experience)
-            TriggerLevelUp();
-    }
-    */
-
     public List<CardSO> chosen;
     void TriggerLevelUp()
     {
-        isLevelingUp = true;
         Time.timeScale = 0f;
 
         levelUpScreen.SetActive(true);
@@ -62,7 +51,6 @@ public class LevelUpManager : MonoBehaviour
     {
         levelUpScreen.SetActive(false);
         Time.timeScale = 1f;
-        isLevelingUp = false;
     }
 
     List<CardSO> PickRandomCards(int amount)
