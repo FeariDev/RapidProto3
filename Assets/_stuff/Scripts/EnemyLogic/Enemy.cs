@@ -122,6 +122,7 @@ public class Enemy : MonoBehaviour
         // TODO: Damage player
         // e.g.: player.GetComponent<PlayerHealth>().TakeDamage(explodeDamage);
 
+        OnDeath?.Invoke();
         Destroy(gameObject);
     }
 

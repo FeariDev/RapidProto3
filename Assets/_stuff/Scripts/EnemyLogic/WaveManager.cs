@@ -94,4 +94,15 @@ public class WaveManager : MonoBehaviour
 
         return candidates[Random.Range(0, candidates.Count)];
     }
+
+	[Button]
+	void DebugKillEnemies()
+	{
+		foreach (GameObject enemy in aliveEnemies)
+		{
+			Destroy(enemy);
+		}
+
+		aliveEnemies.Clear();
+	}
 }
