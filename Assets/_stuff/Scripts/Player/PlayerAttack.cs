@@ -57,7 +57,7 @@ public class PlayerAttack : MonoBehaviour
         if (currentWeapon == null) return;
 
         // Automatic attack between intervals
-        float currentCooldown = currentWeapon.attackCooldown;
+        float currentCooldown = currentWeapon.cooldown;
         if (attackTimer >= currentCooldown)
         {
             PerformAttack();

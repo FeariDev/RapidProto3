@@ -312,10 +312,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerStatistics:
   - statisticType: 0
-    baseValue: 200
+    baseValue: 0
     modifierFlat: 0
     modifierMultiplier: 0
-    finalValue: 200
+    finalValue: 0
     statisticModifiers: []
   - statisticType: 1
     baseValue: 0

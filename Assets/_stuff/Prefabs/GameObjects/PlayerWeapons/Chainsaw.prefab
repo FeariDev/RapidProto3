@@ -167,8 +167,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WeaponPrefab: {fileID: 0}
-  attackCooldown: 0.2
+  baseDamage: 5
+  baseCooldown: 0.1
   damage: 8
+  cooldown: 1
   chainsawDamage: 8
   chainsawLifetime: 0.3
   chainsawDistance: 0.5

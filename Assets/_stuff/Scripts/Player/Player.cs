@@ -6,6 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerInventory))]
 [RequireComponent(typeof(PlayerAttack))]
 [RequireComponent(typeof(PlayerLevel))]
+[RequireComponent(typeof(PlayerHealth))]
 public class Player : Singleton<Player>
 {
     public PlayerMovement movement;
@@ -14,6 +15,7 @@ public class Player : Singleton<Player>
     public PlayerInventory inventory;
     public PlayerAttack attack;
     public PlayerLevel level;
+    public PlayerHealth health;
 
 
 
@@ -29,6 +31,7 @@ public class Player : Singleton<Player>
         inventory = GetComponent<PlayerInventory>();
         attack = GetComponent<PlayerAttack>();
         level = GetComponent<PlayerLevel>();
+        health = GetComponent<PlayerHealth>();
     }
 
     #endregion

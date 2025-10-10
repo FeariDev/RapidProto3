@@ -28,6 +28,58 @@ public class PlayerStatistics : MonoBehaviour
         //Debug.Log($"Player statistics initialized!");
     }
 
+    void GetPlayerStatisticsBaseValues()
+    {
+        foreach (PlayerStatistic statistic in playerStatistics)
+        {
+            switch (statistic.statisticType)
+            {
+                case PlayerStatistic.StatisticType.MoveSpeed:
+                    statistic.baseValue = Player.Instance.movement.baseMoveSpeed;
+                    break;
+                case PlayerStatistic.StatisticType.AttackSpeed:
+                    statistic.baseValue = Player.Instance.attack.currentWeapon.baseCooldown;
+                    break;
+                case PlayerStatistic.StatisticType.AttackDamage:
+                    statistic.baseValue = Player.Instance.attack.currentWeapon.baseDamage;
+                    break;
+                case PlayerStatistic.StatisticType.Defense:
+                    
+                    break;
+            }
+        }
+    }
+
+    void ApplyPlayerStatistics()
+    {
+        foreach (PlayerStatistic statistic in playerStatistics)
+        {
+            switch (statistic.statisticType)
+            {
+                case PlayerStatistic.StatisticType.MoveSpeed:
+                    Player.Instance.movement.moveSpeed = statistic.finalValue;
+                    break;
+                case PlayerStatistic.StatisticType.AttackSpeed:
+                    Player.Instance.attack.currentWeapon.cooldown = statistic.finalValue;
+                    break;
+                case PlayerStatistic.StatisticType.AttackDamage:
+                    Player.Instance.attack.currentWeapon.damage = statistic.finalValue;
+                    break;
+                case PlayerStatistic.StatisticType.Defense:
+                    
+                    break;
+            }
+        }
+    }
+
+    void UpdatePlayerStatistics()
+    {
+        foreach (PlayerStatistic statistic in playerStatistics)
+        {
+            
+        }
+    }
+
 
 
     void OnInventoryUpdate(InventorySlot slot)
@@ -36,7 +88,9 @@ public class PlayerStatistics : MonoBehaviour
 
         CardSO card = (CardSO)slot.itemType;
 
+        GetPlayerStatisticsBaseValues();
         ApplyCardModifier(card, slot.itemAmount);
+        ApplyPlayerStatistics();
     }
 
     void ApplyCardModifier(CardSO card, int cardAmount)

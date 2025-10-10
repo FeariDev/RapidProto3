@@ -4,7 +4,8 @@ public class PlayerMovement : MonoBehaviour
 {
     Rigidbody2D rb;
 
-    [SerializeField] float moveSpeed;
+    public float baseMoveSpeed;
+    public float moveSpeed;
 
     Vector2 moveDirection;
     Vector3 moveValue;
