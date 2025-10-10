@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 622472701f4fccf47a575b1ee4935a75, type: 3}
   m_Name: Card_MoveSpeedFlat2
   m_EditorClassIdentifier: 
+  sprite: {fileID: 0}
+  itemName: Movement 2
+  itemDesc: +12 MoveSpeed
   maxStackAmount: 10
-  cardSprite: {fileID: 0}
+  weight: 0
   cardModifiers:
   - modifierValue: 12
     modifierType: 0

@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 622472701f4fccf47a575b1ee4935a75, type: 3}
   m_Name: Card_AttackSpeed
   m_EditorClassIdentifier: 
+  sprite: {fileID: 0}
+  itemName: Attack Speed
+  itemDesc: +6 Attack Speed
   maxStackAmount: 4
-  cardSprite: {fileID: 0}
+  weight: 0
   cardModifiers:
   - modifierValue: 6
     modifierType: 0

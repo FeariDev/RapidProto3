@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 622472701f4fccf47a575b1ee4935a75, type: 3}
   m_Name: Card_DefenseFlat
   m_EditorClassIdentifier: 
-  itemName: 
+  sprite: {fileID: 0}
+  itemName: Defense 1
+  itemDesc: +5 Defense
   maxStackAmount: 1
   weight: 0
-  cardSprite: {fileID: 0}
   cardModifiers:
   - modifierValue: 5
     modifierType: 0
