@@ -76,9 +76,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 4
-  m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_SortingOrder: 5
+  m_Sprite: {fileID: -2311659948842064771, guid: a182ac82d11747c4eb91e80360180a5a, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -126,7 +126,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1.08, y: 1.08}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -264,12 +264,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26c53ef93eed87746bc788bd1d2ba212, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movement: {fileID: 0}
-  camera: {fileID: 0}
-  statistics: {fileID: 0}
-  inventory: {fileID: 0}
-  attack: {fileID: 0}
-  level: {fileID: 0}
+  movement: {fileID: 2776823809744337986}
+  camera: {fileID: 1585210763996124445}
+  statistics: {fileID: 293636472706857323}
+  inventory: {fileID: 1534483698407363107}
+  attack: {fileID: 434800377764557541}
+  level: {fileID: 1958127308133422331}
 --- !u!114 &2776823809744337986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -297,7 +297,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camera: {fileID: 0}
   followTarget: {fileID: 1067977858665581259}
-  followSpeed: 2.5
+  followSpeed: 10000
 --- !u!114 &293636472706857323
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -315,9 +315,21 @@ MonoBehaviour:
     baseValue: 200
     modifierFlat: 0
     modifierMultiplier: 0
-    finalValue: 0
+    finalValue: 200
     statisticModifiers: []
   - statisticType: 1
+    baseValue: 0
+    modifierFlat: 0
+    modifierMultiplier: 0
+    finalValue: 0
+    statisticModifiers: []
+  - statisticType: 2
+    baseValue: 0
+    modifierFlat: 0
+    modifierMultiplier: 0
+    finalValue: 0
+    statisticModifiers: []
+  - statisticType: 3
     baseValue: 0
     modifierFlat: 0
     modifierMultiplier: 0
@@ -336,15 +348,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventory:
+  - itemType: {fileID: 11400000, guid: a59fa4c0134dee74c82ce5bb6c99135c, type: 2}
+    itemAmount: 0
+  - itemType: {fileID: 11400000, guid: 63fe428f570592d4fb49643633decdf7, type: 2}
+    itemAmount: 0
+  - itemType: {fileID: 11400000, guid: 0e9acb21b7e755d4ca754f93b2309258, type: 2}
+    itemAmount: 0
+  - itemType: {fileID: 11400000, guid: 169cb379ba5ca7648bca09b969221f9a, type: 2}
+    itemAmount: 0
+  - itemType: {fileID: 11400000, guid: 064bb8463a8f36f4fbbeb0c6a3cf31c6, type: 2}
+    itemAmount: 0
   - itemType: {fileID: 11400000, guid: e10b7915a65d0ab4c81dbdb17fc13b35, type: 2}
     itemAmount: 0
   - itemType: {fileID: 11400000, guid: 84354aebb7f61df43b4e21f36adbc750, type: 2}
     itemAmount: 0
   - itemType: {fileID: 11400000, guid: 0877d6fb53986724a99a908a41fbd2d0, type: 2}
-    itemAmount: 0
-  - itemType: {fileID: 11400000, guid: 0e9acb21b7e755d4ca754f93b2309258, type: 2}
-    itemAmount: 0
-  - itemType: {fileID: 11400000, guid: ca48dde2308fbba4e9c6fd5663155210, type: 2}
     itemAmount: 0
   debugItem: {fileID: 11400000, guid: e10b7915a65d0ab4c81dbdb17fc13b35, type: 2}
   debugAmount: 1
@@ -363,9 +381,11 @@ MonoBehaviour:
   slashPrefab: {fileID: 2718999305193530113, guid: 287e2ea35a9c8b84db4243549f0d6212, type: 3}
   bulletPrefab: {fileID: 4128790721785997761, guid: 8074426f81185f0429a1cdad1fcb49d9, type: 3}
   chainsawPrefab: {fileID: 4872019258911784190, guid: 492abb98dda681245a17fcc61d850625, type: 3}
+  kelmuPrefab: {fileID: 9129696192246960593, guid: cb87c3b283b184a4f8b11ad64620e80e, type: 3}
   slashAudio: {fileID: 9146793978014798093}
   bulletAudio: {fileID: 4263813183249040386}
   chainsawAudio: {fileID: 7008738012599199306}
+  kelmuAudio: {fileID: 9146793978014798093}
   chainsawCooldown: 0.2
   currentWeapon: {fileID: 2718999305193530113, guid: 287e2ea35a9c8b84db4243549f0d6212, type: 3}
 --- !u!114 &5876313223528371410

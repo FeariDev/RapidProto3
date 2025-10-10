@@ -22,17 +22,18 @@ public class PlayerStatistics : MonoBehaviour
             }
             playerStatistics[i].statisticType = array[i];
 
-            Debug.Log($"Initialized player statistic '{playerStatistics[i].statisticType}'");
+            //Debug.Log($"Initialized player statistic '{playerStatistics[i].statisticType}'");
         }
 
-        Debug.Log($"Player statistics initialized!");
+        //Debug.Log($"Player statistics initialized!");
     }
 
 
 
     void OnInventoryUpdate(InventorySlot slot)
     {
-        //ERROR HANDLING IF ITEM IS NOT A CARD
+        if (slot.itemType.GetType() != typeof(CardSO)) return;
+
         CardSO card = (CardSO)slot.itemType;
 
         ApplyCardModifier(card, slot.itemAmount);

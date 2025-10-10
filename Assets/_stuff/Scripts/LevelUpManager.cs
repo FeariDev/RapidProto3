@@ -14,19 +14,23 @@ public class LevelUpManager : MonoBehaviour
     public GameObject levelUpScreen;
 
     private bool isLevelingUp = false;
-    private PlayerLevel playerLevelScript;
 
     void Start()
     {
         levelUpScreen.SetActive(false);
+
+        Player.Instance.level.OnLevelUp += TriggerLevelUp;
     }
 
+    /*
     void Update()
     {
         if (playerLevelScript.levelUpExpRequirement <= playerLevelScript.Experience)
             TriggerLevelUp();
     }
+    */
 
+    public List<CardSO> chosen;
     void TriggerLevelUp()
     {
         isLevelingUp = true;
@@ -37,7 +41,7 @@ public class LevelUpManager : MonoBehaviour
         foreach (Transform child in cardUIParent)
             Destroy(child.gameObject);
 
-        List<CardSO> chosen = PickRandomCards(3);
+        chosen = PickRandomCards(3);
 
         foreach (CardSO card in chosen)
         {
@@ -49,8 +53,7 @@ public class LevelUpManager : MonoBehaviour
 
     public void ChooseCard(CardSO chosen)
     {
-        // TODO: Apply card effect / add to inventory
-        // e.g. PlayerInventory.instance.AddCard(chosen);
+        Player.Instance.inventory.AddItem(chosen, 1);
 
         CloseLevelUp();
     }

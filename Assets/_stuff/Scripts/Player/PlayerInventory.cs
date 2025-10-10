@@ -18,7 +18,7 @@ public class PlayerInventory : MonoBehaviour
     /// <param name="item"></param>
     /// <param name="amount"></param>
     /// <returns>The amount of items that were left over. </returns>
-    int AddItem(ItemSO item, int amount)
+    public int AddItem(ItemSO item, int amount)
     {
         int leftOverItems = amount;
 
@@ -47,7 +47,7 @@ public class PlayerInventory : MonoBehaviour
             }
 
             OnInventoryUpdate?.Invoke(inventory[i]);
-            Debug.Log(leftOverItems);
+            //Debug.Log(leftOverItems);
             return leftOverItems;
         }
 
