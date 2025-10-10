@@ -14,8 +14,9 @@ public class EnemyProjectile : MonoBehaviour
     {
         if (col.CompareTag("Player"))
         {
-            // TODO: Damage player
-            // e.g.: col.GetComponent<PlayerHealth>().TakeDamage(damage);
+            PlayerHealth ph = col.GetComponent<PlayerHealth>();
+            if (ph != null)
+                ph.TakeDamage(damage);
 
             Destroy(gameObject);
         }

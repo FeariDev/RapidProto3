@@ -119,8 +119,12 @@ public class Enemy : MonoBehaviour
     {
         Debug.Log($"{gameObject.name} exploded");
 
-        // TODO: Damage player
-        // e.g.: player.GetComponent<PlayerHealth>().TakeDamage(explodeDamage);
+        if (player != null)
+        {
+            PlayerHealth ph = player.GetComponent<PlayerHealth>();
+            if (ph != null)
+                ph.TakeDamage(explodeDamage);
+        }
 
         OnDeath?.Invoke();
         Destroy(gameObject);
@@ -172,5 +176,14 @@ public class Enemy : MonoBehaviour
 
         if (sr != null)
             sr.color = normalColor;
+    }
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.CompareTag("Player"))
+        {
+            PlayerHealth ph = col.GetComponent<PlayerHealth>();
+            if (ph != null)
+                ph.TakeDamage(damage);
+        }
     }
 }

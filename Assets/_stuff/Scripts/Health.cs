@@ -42,6 +42,10 @@ public abstract class Health : MonoBehaviour
 
         OnUpdateHealth?.Invoke();
     }
+    public void TakeDamage(float amount)
+    {
+        AddHealth(-amount);
+    }
 
     void CheckAliveStatus()
     {
