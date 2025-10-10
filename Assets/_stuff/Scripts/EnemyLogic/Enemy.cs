@@ -22,6 +22,7 @@ public class Enemy : MonoBehaviour
     [Header("Creeper Settings")]
     public float explodeRange = 1.5f;
     public float explodeDamage = 10f;
+    [SerializeField] GameObject explosionSprite;
 
     [Header("Drops")]
     public GameObject xpPrefab;
@@ -126,8 +127,11 @@ public class Enemy : MonoBehaviour
                 ph.TakeDamage(explodeDamage);
         }
 
+        explosionSprite.SetActive(true);
+        moveSpeed = 0;
+
         OnDeath?.Invoke();
-        Destroy(gameObject);
+        Destroy(gameObject, 0.6f);
     }
 
     public void TakeDamage(float dmg)
