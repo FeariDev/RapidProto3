@@ -9,6 +9,8 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerHealth))]
 public class Player : Singleton<Player>
 {
+    public InputSystem_Actions input;
+
     public PlayerMovement movement;
     public new PlayerCamera camera;
     public PlayerStatistics statistics;
@@ -32,6 +34,17 @@ public class Player : Singleton<Player>
         attack = GetComponent<PlayerAttack>();
         level = GetComponent<PlayerLevel>();
         health = GetComponent<PlayerHealth>();
+
+        input = new InputSystem_Actions();
+    }
+
+    void OnEnable()
+    {
+        input.Player.Enable();
+    }
+    void OnDisable()
+    {
+        input.Player.Disable();
     }
 
     #endregion

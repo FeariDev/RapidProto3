@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Slash : Weapon
 {
+    InputSystem_Actions input;
+
     public float slashLifetime = 0.5f;
     public float slashDistance = 1f;
     public override void Attack(Vector3 attackPos)
@@ -19,6 +21,6 @@ public class Slash : Weapon
         transform.rotation = Quaternion.Euler(0, 0, angle);
 
         Debug.Log(gameObject);
-        Destroy(gameObject ,slashLifetime);
+        Destroy(gameObject, slashLifetime);
     }
 }
