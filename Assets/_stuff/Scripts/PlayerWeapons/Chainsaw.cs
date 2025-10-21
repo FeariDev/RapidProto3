@@ -6,13 +6,8 @@ public class Chainsaw : Weapon
     public float chainsawDistance = 0.5f;
     public override void Attack(Vector3 attackPos)
     {
-
-        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mousePos.z = 0;
-        Vector3 dir = (mousePos - transform.position).normalized;
-
+        Vector3 dir = AimHelper.GetAimDirection(transform);
         Vector3 chainsawPos = transform.position + dir * chainsawDistance;
-       
 
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, angle);

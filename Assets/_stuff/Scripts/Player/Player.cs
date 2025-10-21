@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(PlayerMovement))]
 [RequireComponent(typeof(PlayerCamera))]
@@ -19,7 +19,8 @@ public class Player : Singleton<Player>
     public PlayerLevel level;
     public PlayerHealth health;
 
-
+    // 🧭 Add this property for right-stick aim
+    public Vector2 AimDirection { get; private set; }
 
     #region Unity lifecycle
 
@@ -42,10 +43,28 @@ public class Player : Singleton<Player>
     {
         input.Player.Enable();
     }
+
     void OnDisable()
     {
         input.Player.Disable();
     }
 
+    void Update()
+    {
+        UpdateAimDirection();
+    }
+
     #endregion
+
+    // 🎮 Keeps AimDirection updated from right stick
+    private void UpdateAimDirection()
+    {
+        Vector2 lookInput = input.Player.Look.ReadValue<Vector2>();
+
+        // Deadzone (to avoid flicker)
+        if (lookInput.magnitude > 0.2f)
+            AimDirection = lookInput.normalized;
+        else
+            AimDirection = Vector2.zero;
+    }
 }

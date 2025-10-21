@@ -10,26 +10,22 @@ public class Kelmu : Weapon
 	public int pierceCount = 5;
 
 	private int enemiesHit = 0;
-	
-	public override void Attack(Vector3 attackPos)
-	{
 
-		Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-		mousePos.z = 0;
-		Vector3 dir = (mousePos - transform.position).normalized;
+    public override void Attack(Vector3 attackPos)
+    {
+        Vector3 dir = AimHelper.GetAimDirection(transform);
 
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0, 0, angle);
 
-		float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-		transform.rotation = Quaternion.Euler(0, 0, angle);
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        if (rb != null)
+            rb.linearVelocity = dir * bulletSpeed;
 
-		Rigidbody2D rb = GetComponent<Rigidbody2D>();
-		if (rb != null)
-			rb.linearVelocity = dir * bulletSpeed;
+        Destroy(gameObject, bulletLifetime);
+    }
 
-		Destroy(gameObject, bulletLifetime);
-	}
-
-	private HashSet<Enemy> hitEnemies = new HashSet<Enemy>();
+    private HashSet<Enemy> hitEnemies = new HashSet<Enemy>();
 	
 	public override void OnTriggerEnter2D(Collider2D col)
 	{

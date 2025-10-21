@@ -17,11 +17,7 @@ public class Bullet : Weapon
     public float bulletLifetime = 3f;
     public override void Attack(Vector3 attackPos)
     {
-
-        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mousePos.z = 0;
-        Vector3 dir = (mousePos - transform.position).normalized;
-
+        Vector3 dir = AimHelper.GetAimDirection(transform);
 
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, angle);
