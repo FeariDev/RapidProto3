@@ -1,22 +1,25 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public static class AimHelper
 {
     public static Vector3 GetAimDirection(Transform weaponTransform)
     {
-        Vector2 aim = Player.Instance.AimDirection;
+        Vector3 aimTarget = Vector3.zero;
 
-        // If controller stick is being used
-        if (aim.sqrMagnitude > 0.01f)
+        // 🕹 If using controller + virtual cursor, use its position
+        if (VirtualCursor.WorldPosition != Vector3.zero)
         {
-            return new Vector3(aim.x, aim.y, 0).normalized;
+            aimTarget = VirtualCursor.WorldPosition;
         }
         else
         {
-            // Fallback to mouse aiming
+            // 🖱 fallback to real mouse
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mousePos.z = 0;
-            return (mousePos - weaponTransform.position).normalized;
+            aimTarget = mousePos;
         }
+
+        Vector3 dir = (aimTarget - weaponTransform.position).normalized;
+        return dir;
     }
 }
