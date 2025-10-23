@@ -1,10 +1,10 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System;
+using UnityEngine.InputSystem;
 
 public class PlayerAttack : MonoBehaviour
 {
-    // Different types of attacks the player can switch between
-    public enum AttackType { Slash, Bullet, Chainsaw }
+    public enum AttackType { Slash, Bullet, Chainsaw, Kelmu }
 
     [Header("Attack Settings")]
     public Weapon slashPrefab;
@@ -12,51 +12,54 @@ public class PlayerAttack : MonoBehaviour
     public Weapon chainsawPrefab;
     public Weapon kelmuPrefab;
 
-    [Header("attackAudio")]
+    [Header("Attack Audio")]
     [SerializeField] private AudioSource slashAudio;
     [SerializeField] private AudioSource bulletAudio;
     [SerializeField] private AudioSource chainsawAudio;
     [SerializeField] private AudioSource kelmuAudio;
 
-
-    [Header("Bullet Settings")]
-
-  
-    public float chainsawCooldown = 0.2f;   
+    [Header("Cooldowns")]
+    public float chainsawCooldown = 0.2f;
 
     private float attackTimer;
+    public Weapon currentWeapon;
+    private int currentWeaponIndex = 0;
+
+    private Weapon[] weaponList;
 
     public Action<int> OnWeaponSwitched;
+
+    void Start()
+    {
+        // Put all weapon prefabs in order
+        weaponList = new Weapon[] { slashPrefab, bulletPrefab, chainsawPrefab, kelmuPrefab };
+
+        // Default to first weapon
+        if (weaponList.Length > 0)
+        {
+            currentWeapon = weaponList[0];
+            OnWeaponSwitched?.Invoke(1);
+        }
+    }
 
     void Update()
     {
         attackTimer += Time.deltaTime;
 
-        // Switch attack with number keys
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        // ✅ Keyboard number key switching
+        if (Input.GetKeyDown(KeyCode.Alpha1)) SwitchWeapon(0);
+        else if (Input.GetKeyDown(KeyCode.Alpha2)) SwitchWeapon(1);
+        else if (Input.GetKeyDown(KeyCode.Alpha3)) SwitchWeapon(2);
+        else if (Input.GetKeyDown(KeyCode.Alpha4)) SwitchWeapon(3);
+
+        // ✅ Controller RB cycling (Right Bumper)
+        if (Gamepad.current != null && Gamepad.current.rightShoulder.wasPressedThisFrame)
         {
-            currentWeapon = slashPrefab;
-            OnWeaponSwitched?.Invoke(1);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            currentWeapon = bulletPrefab;
-            OnWeaponSwitched?.Invoke(2);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            currentWeapon = chainsawPrefab;
-            OnWeaponSwitched?.Invoke(3);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            currentWeapon = kelmuPrefab;
-            OnWeaponSwitched?.Invoke(4);
+            CycleNextWeapon();
         }
 
+        // Automatic attack loop
         if (currentWeapon == null) return;
-
-        // Automatic attack between intervals
         float currentCooldown = currentWeapon.cooldown;
         if (attackTimer >= currentCooldown)
         {
@@ -65,12 +68,33 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
+    void SwitchWeapon(int index)
+    {
+        if (index < 0 || index >= weaponList.Length) return;
+
+        currentWeaponIndex = index;
+        currentWeapon = weaponList[index];
+        OnWeaponSwitched?.Invoke(index + 1);
+    }
+
+    void CycleNextWeapon()
+    {
+        currentWeaponIndex++;
+        if (currentWeaponIndex >= weaponList.Length)
+            currentWeaponIndex = 0;
+
+        currentWeapon = weaponList[currentWeaponIndex];
+        OnWeaponSwitched?.Invoke(currentWeaponIndex + 1);
+    }
+
     void PerformAttack()
     {
+        if (currentWeapon == null) return;
+
         Weapon newWeapon = Instantiate(currentWeapon, transform.position, Quaternion.identity, transform);
         newWeapon.Attack(transform.position);
 
-        //Sound effects
+        // ✅ Play weapon sounds
         if (currentWeapon == slashPrefab)
         {
             slashAudio.Play();
@@ -81,25 +105,22 @@ public class PlayerAttack : MonoBehaviour
         }
         else if (currentWeapon == chainsawPrefab)
         {
-            if (!chainsawAudio.isPlaying) // only start if not already playing
+            if (!chainsawAudio.isPlaying)
             {
                 chainsawAudio.loop = true;
                 chainsawAudio.Play();
             }
         }
-        else if (currentWeapon = kelmuPrefab)
+        else if (currentWeapon == kelmuPrefab)
         {
             kelmuAudio.Play();
         }
+
+        // Stop chainsaw audio if using another weapon
         if (currentWeapon != chainsawPrefab)
         {
             chainsawAudio.loop = false;
             chainsawAudio.Stop();
         }
     }
-
-   
-
-
-    public Weapon currentWeapon;
 }
