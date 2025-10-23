@@ -879,7 +879,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5876313223528371410, guid: 5573735aa035c4942b0b9e6da492eb24, type: 3}
       propertyPath: maxHealth
-      value: 100000
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 5876313223528371410, guid: 5573735aa035c4942b0b9e6da492eb24, type: 3}
       propertyPath: healthSlider
