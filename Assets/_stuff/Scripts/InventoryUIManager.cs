@@ -1,7 +1,8 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using TMPro;
+using UnityEngine.InputSystem;
 
 public class InventoryUIManager : MonoBehaviour
 {
@@ -27,11 +28,24 @@ public class InventoryUIManager : MonoBehaviour
 
     void Update()
     {
+        // ✅ Keyboard open/close
         if (Input.GetKeyDown(KeyCode.Tab))
             OpenInventory();
 
         if (Input.GetKeyUp(KeyCode.Tab))
             CloseInventory();
+
+        // ✅ Controller Left Bumper open/close
+        if (Gamepad.current != null)
+        {
+            if (Gamepad.current.leftShoulder.wasPressedThisFrame)
+            {
+                if (!isOpen)
+                    OpenInventory();
+                else
+                    CloseInventory();
+            }
+        }
     }
 
     void OpenInventory()
@@ -41,6 +55,9 @@ public class InventoryUIManager : MonoBehaviour
         inventoryPanel.SetActive(true);
         RefreshInventoryDisplay();
         isOpen = true;
+
+        // Optional: pause game when inventory is open
+        Time.timeScale = 0f;
     }
 
     void CloseInventory()
@@ -49,6 +66,9 @@ public class InventoryUIManager : MonoBehaviour
 
         inventoryPanel.SetActive(false);
         isOpen = false;
+
+        // Resume game when inventory closes
+        Time.timeScale = 1f;
     }
 
     void OnInventoryUpdate(InventorySlot slot)
@@ -73,11 +93,9 @@ public class InventoryUIManager : MonoBehaviour
             if (icon != null && slot.itemType.sprite != null)
                 icon.sprite = slot.itemType.sprite;
 
-            
             amountText.text = $"x{slot.itemAmount}";
 
             itemUIInstances[slot.itemType] = ui;
         }
-
     }
 }
